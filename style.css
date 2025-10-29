@@ -1,0 +1,108 @@
+body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .headerGame {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .gameBoard {
+            display: grid;
+            height: 600px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .cader{
+            width: 80%;
+            height: 80%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .card {
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            border: solid 10px #000;
+        }
+        .img1{
+            background-image: url(img/img1.webp);
+            background-size: cover;
+            background-position: center;
+        }
+        .img2{
+            background-image: url(img/img2.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img3{
+            background-image: url(img/img3.jpeg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img4{
+            background-image: url(img/img4.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img5{
+            background-image: url(img/img5.png);
+            background-size: cover;
+            background-position: center;
+        }
+        .img6{
+            background-image: url(img/img6.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img7{
+            background-image: url(img/img7.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img8{
+            background-image: url(img/img8.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img9{
+            background-image: url(img/img9.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img10{
+            background-image: url(img/img10.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        .img11{
+            background-image: url(img/img11.webp);
+            background-size: cover;
+            background-position: center;
+        }
+        .img12{
+            background-image: url(img/img12.webp);
+            background-size: cover;
+            background-position: center;
+        }
+     
+
+        
+        
