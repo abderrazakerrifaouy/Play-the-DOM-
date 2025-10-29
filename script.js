@@ -1,13 +1,17 @@
 let numbercheck ;
+let timeCount = 0;
+let numberCardes ;
+
 let listCorrect ;
 let listCard ;
 const gameBoard = document.getElementById('gameBoard');
 let a = -1;
 let b = -1;
 let c = 0;
-let numberCardes ;
+
 let timer;
-let timeCount = 0;
+
+
 
 
 function startNewGame() {
@@ -52,9 +56,25 @@ function StartGame() {
   }
 }
 
+function genereTime() {
+  clearInterval(timer);
+  timeCount = 0;
+  timer = setInterval(() => {
+    timeCount++;
+    document.querySelector(".timer").innerText = `Time: ${timeCount}s`;
+  }, 1000);
+}
+
+function genereNumber() {
+  let nImge = Math.floor(Math.random() * (numberCardes / 2)) + 1;
+  let count = listCard.filter(x => x === nImge).length;
+  if (count < 2) return nImge;
+  return genereNumber();
+}
+
 function addFlipEvent(cardInner, i) {
   cardInner.addEventListener("click", function () {
-    if (cheangeBackgrounde2(i, cardInner)) {
+    if (cheangeBackgrounde2(i)) {
       numbercheck++;
       document.querySelector(".moves").innerText = `Moves: ${numbercheck}`;
       cardInner.classList.add("flipped");
@@ -62,7 +82,9 @@ function addFlipEvent(cardInner, i) {
   });
 }
 
-function cheangeBackgrounde2(i, cardInner) {
+function cheangeBackgrounde2(i) {
+    console.log(listCorrect);
+    console.log(i);
   if (listCorrect.includes(i)) return false;
   if (i === a) return false;
 
@@ -96,22 +118,6 @@ function checkMatch() {
   StopedGame();
 }
 
-function genereNumber() {
-  let nImge = Math.floor(Math.random() * (numberCardes / 2)) + 1;
-  let count = listCard.filter(x => x === nImge).length;
-  if (count < 2) return nImge;
-  return genereNumber();
-}
-
-function genereTime() {
-  clearInterval(timer);
-  timeCount = 0;
-  timer = setInterval(() => {
-    timeCount++;
-    document.querySelector(".timer").innerText = `Time: ${timeCount}s`;
-  }, 1000);
-}
-
 function resetGame() {
   location.reload();
 }
@@ -122,11 +128,9 @@ function StopedGame() {
     setTimeout(() => {
       alert(` Game Over!\nMoves: ${numbercheck}\nTime: ${timeCount}s`);
     }, 500);
+    addDataInHistory();
   }
 }
-
-
-
 
 
 
