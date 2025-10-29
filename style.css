@@ -2,8 +2,6 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 
 
@@ -213,18 +211,13 @@ header button:hover {
 
 .historyRow {
   display: flex; 
-  justify-content: space-between; 
+  justify-content: space-around; 
   padding: 8px 12px;
   font-size: 16px;
   border-bottom: 1px solid #eee; 
   align-items: center;
   transition:  0.3s;
 }
-
-.historyRow:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
 
 .historyRow:hover {
   background-color: #d9f0ff;
