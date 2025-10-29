@@ -132,5 +132,50 @@ function StopedGame() {
   }
 }
 
+function addDataInHistory() {
+    let historyData = localStorage.getItem('gameHistory') || '[]';
 
+    historyData = JSON.parse(historyData);
+    const newRecord = {
+        level: GenereLevel(),
+        moves: numbercheck,
+        time: timeCount
+    };
+    historyData.push(newRecord);
+    localStorage.setItem('gameHistory', JSON.stringify(historyData));
+}
+
+function GenereLevel() {
+    switch (numberCardes) {
+        case 8 :
+            return 1;
+        case 12 :
+            return 2;
+        case 16 :
+            return 3;
+        case 20 :
+            return 4;
+        case 24 :
+            return 5;
+        default :
+            return 0;
+    }
+
+}
+
+window.onload = function() {
+    const historyData = localStorage.getItem('gameHistory') || '[]';
+    const historyRecords = JSON.parse(historyData);
+    const historyContainer = document.getElementById('historyRecords');
+    historyRecords.forEach(record => {
+        const row = document.createElement('div');
+        row.classList.add('historyRow');
+        row.innerHTML = `
+            <div class="historyLevel">Level: ${record.level}</div>
+            <div class="historyMoves">Moves: ${record.moves}</div>
+            <div class="historyTime">Time: ${record.time}s</div>
+        `;
+        historyContainer.appendChild(row);
+    });
+};
 
