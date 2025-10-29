@@ -1,108 +1,242 @@
-body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-        }
-        .headerGame {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .gameBoard {
-            display: grid;
-            height: 600px;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        .cader{
-            width: 80%;
-            height: 80%;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-        .card {
-            width: 100%;
-            height: 100%;
-            background-color: white;
-            border: 1px solid #ccc;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            border: solid 10px #000;
-        }
-        .img1{
-            background-image: url(img/img1.webp);
-            background-size: cover;
-            background-position: center;
-        }
-        .img2{
-            background-image: url(img/img2.jpg);
-            background-size: cover;
-            background-position: center;
-        }
-        .img3{
-            background-image: url(img/img3.jpeg);
-            background-size: cover;
-            background-position: center;
-        }
-        .img4{
-            background-image: url(img/img4.jpg);
-            background-size: cover;
-            background-position: center;
-        }
-        .img5{
-            background-image: url(img/img5.png);
-            background-size: cover;
-            background-position: center;
-        }
-        .img6{
-            background-image: url(img/img6.jpg);
-            background-size: cover;
-            background-position: center;
-        }
-        .img7{
-            background-image: url(img/img7.jpg);
-            background-size: cover;
-            background-position: center;
-        }
-        .img8{
-            background-image: url(img/img8.jpg);
-            background-size: cover;
-            background-position: center;
-        }
-        .img9{
-            background-image: url(img/img9.jpg);
-            background-size: cover;
-            background-position: center;
-        }
-        .img10{
-            background-image: url(img/img10.jpg);
-            background-size: cover;
-            background-position: center;
-        }
-        .img11{
-            background-image: url(img/img11.webp);
-            background-size: cover;
-            background-position: center;
-        }
-        .img12{
-            background-image: url(img/img12.webp);
-            background-size: cover;
-            background-position: center;
-        }
-     
 
-        
-        
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+body {
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  padding: 20px;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+header input {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  width: 220px;
+  font-size: 14px;
+}
+
+header button {
+  background: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #4a90e2;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+header button:hover {
+  background: #4a90e2;
+  color: #fff;
+}
+
+
+.container {
+  flex: 1;
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  height: fit-content;
+}
+.headerGame {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.restart {
+  background: #ff5e62;
+  border: none;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.restart:hover {
+  background: #ff9966;
+}
+
+
+.gameBoard {
+  display: grid;
+  gap: 15px;
+  justify-content: center;
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  height: fit-content;
+}
+
+.cader {
+  perspective: 1000px;
+}
+
+.card {
+  width: 100%;
+  height: 120px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  backface-visibility: hidden;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+.card-front {
+  background: linear-gradient(145deg, #4a90e2, #66a6ff);
+ 
+}
+
+
+.card-back {
+  transform: rotateY(180deg);
+  background-size: cover;
+  background-position: center;
+  border: 3px solid #fff;
+}
+
+
+.img1 { background-image: url("img/img1.webp"); }
+.img2 { background-image: url("img/img2.jpg"); }
+.img3 { background-image: url("img/img3.jpeg"); }
+.img4 { background-image: url("img/img4.jpg"); }
+.img5 { background-image: url("img/img5.png"); }
+.img6 { background-image: url("img/img6.jpg"); }
+.img7 { background-image: url("img/img7.jpg"); }
+.img8 { background-image: url("img/img8.jpg"); }
+.img9 { background-image: url("img/img9.jpg"); }
+.img10 { background-image: url("img/img10.jpg"); }
+.img11 { background-image: url("img/img11.webp"); }
+.img12 { background-image: url("img/img12.webp"); }
+
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+  .container {
+    padding: 10px;
+  }
+  .card {
+    height: 100px;
+  }
+}
+
+.history {
+  width: 100%;
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 10px;
+  font-family: sans-serif;
+}
+
+.historyHeader {
+  display: flex;
+  justify-content: space-around;
+  padding: 6px 10px;
+}
+
+.historyHeader {
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+#historyRecords {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+
+.historyRow {
+  display: flex; 
+  justify-content: space-between; 
+  padding: 8px 12px;
+  font-size: 16px;
+  border-bottom: 1px solid #eee; 
+  align-items: center;
+  transition:  0.3s;
+}
+
+.historyRow:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+.historyRow:hover {
+  background-color: #d9f0ff;
+  cursor: default;
+}
+
+
+.historyRow span {
+  width: 30%; 
+  text-align: center;
+  font-weight: 500;
+}
+
+
+

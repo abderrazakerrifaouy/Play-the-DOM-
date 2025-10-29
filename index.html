@@ -1,28 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Card Game</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
     <header>
-        <h1>Memory Game</h1>
+        <h1>Memory Card Game</h1>
+        <div class="controls">
+            <select id="levelSelect">
+                <option value="8">Level 1 (8 cards)</option>
+                <option value="12">Level 2 (12 cards)</option>
+                <option value="16">Level 3 (16 cards)</option>
+                <option value="20">Level 4 (20 cards)</option>
+                <option value="24">Level 5 (24 cards)</option>
+            </select>
+            <button onclick="startNewGame()">Start New Game</button>
+        </div>
     </header>
-    <div class="container">
+
+    <main class="container">
         <div class="headerGame">
             <div class="moves">Moves: 0</div>
             <div class="timer">Time: 0s</div>
-            <button class="restart">Restart</button>
-        </div>
-        <div class="gameBoard" id="gameBoard">
+            <button class="restart" onclick="resetGame()">Restart</button>
         </div>
 
-        <div class="cardStart">
-            
+        <div class="gameBoard" id="gameBoard"></div>
+        <div class="history">
+            <h2>History this level</h2>
+            <div class="historyList">
+                <div class="historyHeader">
+                    <span> level </span>
+                    <span> moves </span>
+                    <span> time </span>
+                </div>
+                <div id="historyRecords">
+                    <div class="historyRow">
+                    <span> 1 </span>
+                    <span> 0 </span>
+                    <span> 0s </span>
+                    </div>
+                    <div class="historyRow">
+                    <span> 2 </span>
+                    <span> 0 </span>
+                    <span> 0s </span>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </main>
+
     <script src="script.js"></script>
 </body>
+
 </html>
