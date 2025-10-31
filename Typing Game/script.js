@@ -68,10 +68,21 @@ function genereTimer() {
         timeEl.innerText = `${time}`;
         time--;
 
+        StopedGame();
     }, 1000);
 }
 
+function StopedGame() {
+    if (time < 0) {
+        clearInterval(timer);
+        textInput.disabled = true;
+        let wpm = Math.round((conteuCaracters / 5));
+        let accuracy = Math.round(((conteuCaracters - conterAccurace) / conteuCaracters) * 100);
+        wpmEl.innerText = `${wpm}`;
+        accEl.innerText = `${accuracy}`;
 
+    }
+}
 
 
 
