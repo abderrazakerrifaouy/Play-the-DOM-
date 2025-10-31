@@ -9,7 +9,7 @@ let conterAccurace = 0;
 let conteur = 0;
 let time = 60;
 let timer;
-let Paragraph = [ "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
+let Paragraph = [ "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
 "Typing is a fundamental skill that is essential in today's digital world.",
 "Practice makes perfect, so keep typing to improve your speed and accuracy.",
 "JavaScript is a versatile programming language used for web development.",
