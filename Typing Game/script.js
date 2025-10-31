@@ -9,8 +9,13 @@ let conterAccurace = 0;
 let conteur = 0;
 let time = 60;
 let timer;
-
-const p1 = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quis illum eos molestiae molestias esse neque dolorem illo maiores ut laborum, aliquam voluptatum hic temporibus quaerat iste est rerum recusandae?";
+let Paragraph = [ "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.",
+"Typing is a fundamental skill that is essential in today's digital world.",
+"Practice makes perfect, so keep typing to improve your speed and accuracy.",
+"JavaScript is a versatile programming language used for web development.",
+"Consistent practice can lead to significant improvements in typing proficiency."
+];
+const p1 = Paragraph[genereNumber()];
 
 
 for (let i = 0; i < p1.length; i++) {
@@ -21,9 +26,7 @@ for (let i = 0; i < p1.length; i++) {
 
 
 textInput.addEventListener("keydown", (e) => {
-    if (conteur == 0) {
-        genereTimer();
-    }
+    StopedGame()
     if (e.key == "CapsLock" || e.key == "Shift" || e.key == "Tab" || e.key == "Control" || e.key == "Alt") {
         return
     }
@@ -31,6 +34,9 @@ textInput.addEventListener("keydown", (e) => {
         removeCaracter(conteur - 1);
         conteur--;
         return;
+    }
+    if (conteur == 0) {
+        genereTimer();
     }
     checkCaracter(e.key, conteur);
     conteur++;
@@ -65,18 +71,19 @@ function removeCaracter(index) {
 
 function genereTimer() {
     timer = setInterval(() => {
-        timeEl.innerText = `${time}`;
-        time--;
 
+        time--;
+        timeEl.innerText = `${time}`;
         StopedGame();
+        if (time <= 0) StopedGame() ;
     }, 1000);
 }
 
 function StopedGame() {
-    if (time < 0) {
+    if (time <= 0 || conteur == p1.length) {
         clearInterval(timer);
         textInput.disabled = true;
-        let wpm = Math.round((conteuCaracters / 5));
+        let wpm = Math.round(conteuCaracters / 5);
         let accuracy = Math.round(((conteuCaracters - conterAccurace) / conteuCaracters) * 100);
         wpmEl.innerText = `${wpm}`;
         accEl.innerText = `${accuracy}`;
@@ -85,5 +92,7 @@ function StopedGame() {
 }
 
 
-
-
+function genereNumber() {
+  let nParagraph  = Math.floor(Math.random() * 4);
+  return nParagraph;
+}
