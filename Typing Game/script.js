@@ -4,8 +4,11 @@ const timeEl = document.getElementById("time");
 const wpmEl = document.getElementById("wpm");
 const accEl = document.getElementById("accuracy");
 
+let conteuCaracters = 0;
+let conterAccurace = 0;
 let conteur = 0;
 let time = 60;
+let timer;
 
 const p1 = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quis illum eos molestiae molestias esse neque dolorem illo maiores ut laborum, aliquam voluptatum hic temporibus quaerat iste est rerum recusandae?";
 
@@ -18,46 +21,58 @@ for (let i = 0; i < p1.length; i++) {
 
 
 textInput.addEventListener("keydown", (e) => {
-     if (e.key  == "CapsLock" || e.key  == "Shift" || e.key  == "Tab" ||  e.key  == "Control" || e.key  == "Alt"){ 
+    if (conteur == 0) {
+        genereTimer();
+    }
+    if (e.key == "CapsLock" || e.key == "Shift" || e.key == "Tab" || e.key == "Control" || e.key == "Alt") {
         return
     }
-    if(e.key == "Backspace"){
-        removeCaracter(conteur-1);
+    if (e.key == "Backspace") {
+        removeCaracter(conteur - 1);
         conteur--;
         return;
     }
-      checkCaracter(e.key , conteur);
-      conteur++;
+    checkCaracter(e.key, conteur);
+    conteur++;
+    conteuCaracters++;
 });
 
 
 
-function checkCaracter(caracter , index) {
+function checkCaracter(caracter, index) {
     const str = document.getElementById(`caracter${index}`)
     if (caracter == p1[index]) {
         str.classList.add("correct");
     }
-    else{
+    else {
+        conterAccurace++;
         str.classList.add("incorrect");
     }
 }
 
 function removeCaracter(index) {
     const str = document.getElementById(`caracter${index}`)
-    str.classList.remove("correct");
-    str.classList.remove("incorrect");
-    
+    if (str.classList.contains("incorrect")) {
+        conterAccurace--;
+        str.classList.remove("incorrect");
+    }
+    else {
+        str.classList.remove("correct");
+    }
+
+
 }
-function startGame() {
-    conteur = 0;
-    time = 60;
-    textInput.value = "";
-    wpmEl.innerText = `WPM: ${0}`;
-    accEl.innerText = `Accuracy: ${0}%`;
-    timeEl.innerText = `Time: ${time}s`;
-    const allCaracter = textDisplay.querySelectorAll("strong");
-    allCaracter.forEach((el) => {
-        el.classList.remove("correct");
-        el.classList.remove("incorrect");
-    });
+
+function genereTimer() {
+    timer = setInterval(() => {
+        timeEl.innerText = `${time}`;
+        time--;
+
+    }, 1000);
 }
+
+
+
+
+
+

@@ -8,19 +8,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body> 
 
     <div class="container">
+        <div class="header">
         <h1>Typing Speed Test</h1>
-
-        <div class="timer"> Time left: <span id="time">60</span>s
+        <p>Time left: <span id="time">60</span>s</p>
         </div>
+
+        
 
         <div id="textDisplay" class="text-display"></div>
 
         <textarea id="textInput" placeholder="Start typing here..." autofocus></textarea>
 
-        
+        <div class="results">
+            <div>WPM: <span id="wpm">0</span></div>
+            <div>Accuracy: <span id="accuracy">0</span>%</div>
+        </div>
+
+
     </div>
     <script src="script.js"></script>
 </body>
